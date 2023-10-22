@@ -1,0 +1,49 @@
+#include<iostream>
+using namespace std;
+int nearsort(int arr[],int target)
+{
+    int s=0;
+    int e=6;
+    int mid= s+(e-s)/2;
+    int ans=-1;
+    while(s<=e)
+    {
+        int element= arr[mid];
+        if(arr[mid]==target)
+        {
+            return mid;
+        }
+        if(arr[mid+1]==target)
+        {
+            return mid+1;
+        }
+        if(arr[mid-1]==target)
+        {
+            return mid-1;
+        }
+        if(target>arr[mid])
+        {
+            s=mid+2;
+        }
+        else{
+            e= mid-2;
+        }
+        mid=s+(e-s)/2;
+
+    }
+    return -1;
+}
+int main()
+{
+    int arr[]={10,3,40,20,50,80,70};
+    int target= 10;
+    int ans= nearsort( arr,  target);
+    if(ans==-1)
+    {
+        cout<<"target not present in array";
+    }
+    else{
+
+    cout<<" target is present at index"<< " "<<ans;
+    }
+}
